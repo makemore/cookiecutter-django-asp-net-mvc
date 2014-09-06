@@ -10,12 +10,12 @@ Description
 
 The goal of this cookiecutter is to provide a solid starting point for a deployable app, without using magic or anticipating scaling (no redis backflips please).
 
-django 1.7
-bootstrap
-django-compressor
-example app that provides a homepage
-and crud scaffolding example (not ready)
-allauth (not ready)
+- django 1.7
+- bootstrap
+- django-compressor
+- example app that provides a homepage
+- and crud scaffolding example (not ready)
+- allauth (not ready)
 
 Usage
 ------
