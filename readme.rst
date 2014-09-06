@@ -17,7 +17,21 @@ The goal of this cookiecutter is to provide a solid starting point for a deploya
 - and crud scaffolding example (not ready)
 - allauth (not ready)
 
-Usage
+Bare bone usage (sans virtual env, not recommended)
 ------
 
-TBC
+- install python https://www.python.org/download
+- install pip http://pip.readthedocs.org/en/latest/installing.html
+- sudo pip install cookiecutter
+- cookiecutter https://github.com/makemore/cookiecutter-django-asp-net-mvc
+- cd project_name
+
+if postgres installed (recommended)
+
+- sudo pip install -r requirements/dev.txt
+- python manage runserver
+
+else
+
+- sudo pip install django
+- python manage runserver
