@@ -35,3 +35,5 @@ else
 
 - sudo pip install django
 - python manage runserver
+
+You should have an application good enough for production deployment running
