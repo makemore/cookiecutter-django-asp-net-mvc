@@ -1,2 +1,3 @@
-{% load i18n %}
+{% raw %}{% load i18n %}
 {% blocktrans %}Primary e-mail address set.{% endblocktrans %}
+{% endraw %}
