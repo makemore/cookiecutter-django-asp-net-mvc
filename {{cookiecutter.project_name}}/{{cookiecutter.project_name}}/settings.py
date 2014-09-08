@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'compressor',
     'home'
 )
@@ -100,6 +101,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader'
 )
 
+SITE_ID = 1
 
 
 exec open('source_cookie/settings_local.py') in globals()
