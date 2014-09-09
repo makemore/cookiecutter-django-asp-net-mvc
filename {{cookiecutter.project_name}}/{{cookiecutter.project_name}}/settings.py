@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'compressor',
-    'widget_tweaks'
+    'widget_tweaks',
     'home'
 )
 
