@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'compressor',
+    'widget_tweaks'
     'home'
 )
 
@@ -129,5 +130,9 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
     #...
 )
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+LOGIN_REDIRECT_URL = "/"
 
 exec open('source_cookie/settings_local.py') in globals()
