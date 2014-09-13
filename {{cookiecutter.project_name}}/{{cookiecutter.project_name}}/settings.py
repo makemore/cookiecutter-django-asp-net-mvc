@@ -135,4 +135,4 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 LOGIN_REDIRECT_URL = "/"
 
-exec open('source_cookie/settings_local.py') in globals()
+exec open('{{cookiecutter.project_name}}/settings_local.py') in globals()
