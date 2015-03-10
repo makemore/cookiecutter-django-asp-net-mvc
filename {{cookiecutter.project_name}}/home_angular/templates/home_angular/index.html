@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    {% load static %}
+    <script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
+    <script type="text/javascript" src='{% static 'angular/angular.js' %}'></script>
+    <script type="text/javascript" src='{% static 'angular-ui-router/release/angular-ui-router.js' %}'></script>
+    <script type="text/javascript" src='{% static 'home_angular/js/app/app.js' %}'></script>
+    <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}"/>
+    <title></title>
+</head>
+<body ng-app="angularApp">
+
+
+<!-- Header and Nav -->
+
+
+<div ui-view="header"></div>
+
+
+<!-- End Header and Nav -->
+
+<!-- Main Grid Section -->
+
+<div ui-view="container"></div>
+
+
+<!-- End Grid Section -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr/>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>&copy; Copyright no one at all. Go to town.</p>
+            </div>
+            <div class="large-6 columns">
+                <ul class="inline-list right">
+                    <li><a href="#">Section 1</a></li>
+                    <li><a href="#">Section 2</a></li>
+                    <li><a href="#">Section 3</a></li>
+                    <li><a href="#">Section 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

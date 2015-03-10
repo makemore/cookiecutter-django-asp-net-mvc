@@ -42,7 +42,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'compressor',
     'widget_tweaks',
-    'home'
+    'home',
+    'djangobower'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,9 +89,12 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
     'compressor.finders.CompressorFinder',
+    'djangobower.finders.BowerFinder'
 )
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -130,6 +134,16 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
     #...
 )
+
+BOWER_INSTALLED_APPS = (
+ 'foundation#5.5.1',
+ 'angular#1.3.14',
+ 'jquery-placeholder#2.0.9',
+ 'modernizr#2.8.3',
+ 'jquery#2.1.3',
+ 'jquery.cookie#1.4.1',
+ 'angular-ui-router#0.2.13',
+ 'fastclick#1.0.6')
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
