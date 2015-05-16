@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 from os.path import abspath, dirname, join
-
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
@@ -17,19 +18,18 @@ PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w6^e0m!2s6*z^4-b(8d2j0fo2_%^^v4&4xir@l5#l+t3r)rtw7'
+SECRET_KEY = '(n^2!pk#ez8ks=)9ojz++i+g#4w-f+=26of5%t&@nyl%jdxms1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['beta.asdm.co.uk', 'asdm.mkmrd.com', 'localhost']
-
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,24 +41,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'compressor',
-    'taggit',
-    'modelcluster',
-
-    'wagtail.wagtailcore',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailforms',
-
-    'core',
+    'widget_tweaks',
+    'home',
+    'djangobower'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,93 +58,98 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
 
-ROOT_URLCONF = 'asdm.urls'
-WSGI_APPLICATION = 'asdm.wsgi.application'
+ROOT_URLCONF = '{{cookiecutter.project_name}}.urls'
+
+WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '{{cookiecutter.project_name}}',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '', #below lines commented to connect via sockets, without a password. TCP connection requires password
-        #'PASSWORD': '',
-        #'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-        #'PORT': '',                      # Set to empty string for default.
-    }
-}
-
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
     'compressor.finders.CompressorFinder',
+    'djangobower.finders.BowerFinder'
 )
 
-MEDIA_ROOT = join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
+BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
 
-# Django compressor settings
-# http://django-compressor.readthedocs.org/en/latest/settings/
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, "templates"),
 )
 
-
-# Template configuration
-
-from django.conf import global_settings
-
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    'django.core.context_processors.request',
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
+SITE_ID = 1
 
-# Wagtail settings
+#all auth settings
 
-LOGIN_URL = 'wagtailadmin_login'
-LOGIN_REDIRECT_URL = 'wagtailadmin_home'
+TEMPLATE_CONTEXT_PROCESSORS = (
+    #...
+    # Required by allauth template tags
+    "django.core.context_processors.request",
+    'django.contrib.auth.context_processors.auth',
+    #...
+    # allauth specific context processors
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+    #...
+)
 
-WAGTAIL_SITE_NAME = "asdm"
+AUTHENTICATION_BACKENDS = (
+    #...
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
 
-# Use Elasticsearch as the search backend for extra performance and better search results:
-# http://wagtail.readthedocs.org/en/latest/howto/performance.html#search
-# http://wagtail.readthedocs.org/en/latest/core_components/search/backends.html#elasticsearch-backend
-#
-# WAGTAILSEARCH_BACKENDS = {
-#     'default': {
-#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-#         'INDEX': 'asdm',
-#     },
-# }
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+    #...
+)
 
+BOWER_INSTALLED_APPS = (
+ 'foundation#5.5.1',
+ 'angular#1.3.14',
+ 'jquery-placeholder#2.0.9',
+ 'modernizr#2.8.3',
+ 'jquery#2.1.3',
+ 'jquery.cookie#1.4.1',
+ 'angular-ui-router#0.2.13',
+ 'fastclick#1.0.6')
 
-# Whether to use face/feature detection to improve image cropping - requires OpenCV
-WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+LOGIN_REDIRECT_URL = "/"
