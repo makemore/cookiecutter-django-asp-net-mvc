@@ -48,7 +48,8 @@ INSTALLED_APPS = (
     'compressor',
     'widget_tweaks',
     'home',
-    'djangobower'
+    'djangobower',
+    'home_angular'
 )
 
 MIDDLEWARE_CLASSES = (
