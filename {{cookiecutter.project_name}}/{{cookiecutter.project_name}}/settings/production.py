@@ -15,8 +15,8 @@ COMPRESS_OFFLINE = False #This is normally true?
 DATABASES = {
  'default': {
      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-     'NAME': 'asdm',
-     'USER': 'asdm',
+     'NAME': '{{cookiecutter.project_name}}',
+     'USER': '{{cookiecutter.project_name}}',
      'PASSWORD': '',
      'HOST': '',  # Set to empty string for localhost.
      'PORT': '',  # Set to empty string for default.
