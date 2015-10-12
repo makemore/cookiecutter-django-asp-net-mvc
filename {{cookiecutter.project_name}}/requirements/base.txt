@@ -3,4 +3,3 @@ psycopg2
 django-compressor>=1.4
 django-allauth
 django-widget-tweaks
-django-bower
