@@ -48,7 +48,6 @@ INSTALLED_APPS = (
     'compressor',
     'widget_tweaks',
     'home',
-    'djangobower',
     'home_angular'
 )
 
