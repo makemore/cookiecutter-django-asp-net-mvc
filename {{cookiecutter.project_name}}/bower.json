@@ -1,0 +1,15 @@
+{
+  "name": "pander",
+  "version": "0.0.0",
+  "authors": [
+    "chrisbarry <chris.barry@makemoredigital.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
