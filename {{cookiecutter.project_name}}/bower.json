@@ -1,8 +1,8 @@
 {
-  "name": "pander",
+  "name": "{{cookiecutter.project_name}}",
   "version": "0.0.0",
   "authors": [
-    "chrisbarry <chris.barry@makemoredigital.com>"
+    "{{cookiecutter.author_username}} <{{cookiecutter.author_email}}>"
   ],
   "license": "MIT",
   "ignore": [
@@ -11,5 +11,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.15",
+    "foundation": "~5.5.3"
+  }
 }
