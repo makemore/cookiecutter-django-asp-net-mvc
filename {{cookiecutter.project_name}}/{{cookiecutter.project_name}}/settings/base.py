@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 from os.path import abspath, dirname, join
 import os
+from dotenv import load_dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
@@ -21,8 +22,11 @@ PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = None # 'secret-key'
+
+# found .env file, secrets kept in here please.
+load_dotenv(".env")
+assert 'SECRET_KEY' in os.environ, 'Set SECRET_KEY in your .env file!'
+SECRET_KEY = os.environ.get("SECRET_KEY")  # 'secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

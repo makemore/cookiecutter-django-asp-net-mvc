@@ -27,3 +27,6 @@ __MACOSX/*
 bower_components/
 static_root/
 *.idea*
+.env
+
+env_{{cookiecutter.project_name}}/
